@@ -6,15 +6,8 @@ def index
 	@videos = "video 1", "video 2"
 	@photos = "photo 1", "photo 2"
 
-	tweet = JSON.parse('
-{
-	"id" : 1,
-	"username" : "christosconst",
-	"name" : "Christos Constantinou",
-	"avatar" : "https://si0.twimg.com/profile_images/1571459461/sketch_normal.jpg",
-	"content" : "The actual tweet"
-}
-	')
+	file = File.open("tweet.json", "rb")
+	tweet = JSON.parse(file.read)
 
 	@tweets << tweet
 	@tweets << tweet
