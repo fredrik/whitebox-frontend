@@ -26,6 +26,13 @@
 		<p class="document flash hide"><i><%= @message %></i><%= image_tag('loading.gif'); %></p>
 	<% end %>
 	
+	<ul>
+		<li ng-repeat="phone in phones">
+	      {{phone.name}}
+	      <p>{{phone.snippet}}</p>
+	    </li>
+	</ul>
+	
 	<div class="row-fluid">
 		<div class="span6 document">
 
