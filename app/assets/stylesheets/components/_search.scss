@@ -13,20 +13,20 @@
   }
 
   input[type=text] {
-    width: 100%;
+    width: 635px;
     box-sizing: border-box;
     padding: 10px;
-    height: 62px;
+    height: 40px;
     line-height: 32px;
     text-align: center;
     margin-bottom: 10px;
-    font-size: 32px;
+    font-size: 25px;
     font-weight: 100;
   }
 
   input[type=submit] {
     @include transition(background 70ms ease-in-out);
-    width: 465px;
+    width: 150px;
     box-sizing: border-box;
     background: $navy;
     border: none;
