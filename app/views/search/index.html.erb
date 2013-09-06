@@ -13,7 +13,7 @@
 			<div class="search-main">
 				<div class="reset">
 					<%= form_tag root_path, :method => "get", :class => "form-search" do %>
-						<input id="query" name="query" placeholder="enter your search term" type="text" value="" ng-model="query">
+						<input id="query" name="query" placeholder="enter your search term" type="text" value="" ng-model="query" ng-keyup="search(query)">
 						<input class="btn" name="commit" type="button" value="Search" ng-click="search(query)">
 					<% end %>
 				</div>

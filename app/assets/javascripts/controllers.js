@@ -1,7 +1,8 @@
 function SearchCtrl($scope, $http) {
 
   $scope.search = function(query) {
-  	if (query != undefined) {
+  	console.log(query);
+  	if (query != undefined && query.length) {
 		  $http.get('http://localhost:9200/_search/?q=text:' + query).success(function(data) {
 		    $scope.tweets = data.hits.hits
 		  }).
@@ -22,5 +23,5 @@ function SearchCtrl($scope, $http) {
   $scope.tweets = [];
 
   $scope.search();
-  
+
 }
