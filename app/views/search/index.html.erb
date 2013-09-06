@@ -13,8 +13,8 @@
 			<div class="search-main">
 				<div class="reset">
 					<%= form_tag root_path, :method => "get", :class => "form-search" do %>
-						<%= text_field_tag :query, @query || '', :placeholder => "enter your search term" %>
-						<%= submit_tag 'Search', :class => "btn" %>
+						<input id="query" name="query" placeholder="enter your search term" type="text" value="" ng-model="query">
+						<input class="btn" name="commit" type="button" value="Search" ng-click="search(query)">
 					<% end %>
 				</div>
 			</div>
@@ -26,87 +26,26 @@
 		<p class="document flash hide"><i><%= @message %></i><%= image_tag('loading.gif'); %></p>
 	<% end %>
 	
-	<ul>
-		<li ng-repeat="phone in phones">
-	      {{phone.name}}
-	      <p>{{phone.snippet}}</p>
-	    </li>
-	</ul>
-	
 	<div class="row-fluid">
 		<div class="span6 document">
 
-			<h2>Tweets</h2>
-
-			<% if @tweets.present? %>
-				<ul>
-				<% @tweets.each_with_index do |doc, index| %>
-
-					<li class="tweet">
-						<%= render "tweet", :doc => doc %>
-					</li>
-				
-				<% end %>
-				</ul>
-			<% end %>
+			<img class="source" src="/assets/twitter.jpg" width="200px"/>
+			<ul>
+				<li class="tweet" ng-repeat="tweet in tweets">
+					<%= render "tweet" %>
+				</li>
+			</ul>
 
 		</div>
 
 		<div class="span6 document">
 
-			<h2>Links</h2>
-
-			<% if @links.present? %>
-				<ul>
-				<% @links.each_with_index do |doc, index| %>
-
-					<li class="tweet">
-						<%= doc %>
-					</li>
-				
-				<% end %>
-				</ul>
-			<% end %>
-			
-		</div>
-
-	</div>
-
-
-	<div class="row-fluid">
-		<div class="span6 document">
-
-			<h2>Videos</h2>
-
-			<% if @videos.present? %>
-				<ul>
-				<% @videos.each_with_index do |doc, index| %>
-
-					<li class="tweet">
-						<%= doc %>
-					</li>
-				
-				<% end %>
-				</ul>
-			<% end %>
-
-		</div>
-
-		<div class="span6 document">
-
-			<h2>Photos</h2>
-
-			<% if @photos.present? %>
-				<ul>
-				<% @photos.each_with_index do |doc, index| %>
-
-					<li class="tweet">
-						<%= doc %>
-					</li>
-				
-				<% end %>
-				</ul>
-			<% end %>
+			<img class="source" src="/assets/facebook.jpg" width="200px" />
+			<ul>
+				<li class="tweet" ng-repeat="tweet in tweets">
+					<%= render "facebook" %>
+				</li>
+			</ul>
 			
 		</div>
 

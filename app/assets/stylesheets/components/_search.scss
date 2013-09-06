@@ -24,7 +24,7 @@
     font-weight: 100;
   }
 
-  input[type=submit] {
+  input[type=button] {
     @include transition(background 70ms ease-in-out);
     width: 150px;
     box-sizing: border-box;
