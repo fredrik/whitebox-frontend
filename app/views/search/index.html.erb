@@ -36,7 +36,7 @@
 				<% @tweets.each_with_index do |doc, index| %>
 
 					<li class="tweet">
-						<%= doc %>
+						<%= render "tweet", :doc => doc %>
 					</li>
 				
 				<% end %>
