@@ -7,11 +7,20 @@ function SearchCtrl($scope, $http) {
 		  }).
 		  error(function(data, status, headers, config) {
 		  	$scope.tweets = [];
-		  });;
+		  });
+		} else {
+			$http.get('http://localhost:9200/_search/?q=_type:tweet').success(function(data) {
+		    $scope.tweets = data.hits.hits
+		  }).
+		  error(function(data, status, headers, config) {
+		  	$scope.tweets = [];
+		  });
 		}
 		return false;
 	}
 
   $scope.tweets = [];
 
+  $scope.search();
+  
 }
