@@ -1,0 +1,4 @@
+development: localhost:9998
+test: localhost:9998
+staging: localhost:9998
+production: localhost:9998

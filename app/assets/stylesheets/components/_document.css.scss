@@ -1,0 +1,55 @@
+.document {
+  @include box-shadow(0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1));
+  background: $white;
+  position: relative;
+  padding: 50px;
+  margin: 0 auto;
+  background-color: #fff;
+  margin-bottom: 20px;
+
+  .document-meta {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 11px;
+    color: #999;
+  }
+
+  .box:before, .box:after {
+    @include transform(skew(-5deg) rotate(-5deg));
+    @include box-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+    position: absolute;
+    width: 40%;
+    height: 10px;
+    content: ' ';
+    left: 12px;
+    bottom: 12px;
+    background: transparent;
+    z-index: -1;
+  }
+  .box:after {
+    //@include transform(skew(5deg) rotate(5deg));
+    left: auto;
+    right: 12px;
+  }
+}
+
+.flash {
+  @include box-shadow(0 0 5px rgba(0, 0, 0, 0.1), inset 0 0 50px rgba(0, 0, 0, 0.05));
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 24px;
+  background: #fafafa;
+  padding-top: 90px;
+  img {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    margin-left: -20px;
+    width: 40px;
+    height: 40px;
+  }
+}
