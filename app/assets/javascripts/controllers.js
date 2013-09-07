@@ -24,14 +24,14 @@ function SearchCtrl($scope, $http) {
 		// Facebook search
 		if ($scope.fb != null) {
 	  	if (query != undefined && query.length) {
-			  $http.get('http://localhost:9200/_search/?q=fb:' + $scope.fb + '&q=text:' + query).success(function(data) {
+			  $http.get('http://localhost:9200/_search/?q=fb:' + $scope.fb + ' AND *' + query + '*').success(function(data) {
 			    $scope.fbFeed = data.hits.hits
 			  }).
 			  error(function(data, status, headers, config) {
 			  	$scope.fbFeed = [];
 			  });
 			} else {
-				$http.get('http://localhost:9200/_search/?q=_type:tweet').success(function(data) {
+				$http.get('http://localhost:9200/_search/?q=fb:' + $scope.fb).success(function(data) {
 			    $scope.fbFeed = data.hits.hits
 			  }).
 			  error(function(data, status, headers, config) {

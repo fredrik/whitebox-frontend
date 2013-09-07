@@ -1,11 +1,16 @@
-<div class="avatar">
-	<img src="{{tweet._source.user.profile_image_url}}" />
-</div>
-
-<div class="main">
-	<span class="name">{{tweet._source.user.name}}</span>
-	<span class="username">
-		<a target="_blank" href="http://twitter.com/{{tweet._source.user.screen_name}}">{{tweet._source.user.screen_name}}</a>
-	</span>
-	<div class="content">{{tweet._source.text}}</div>
+<div class="row">
+	<div class="span2">
+		<div class="avatar">
+			<img src="{{item._source.picture}}" width="50px"/>
+		</div>
+	</div>
+	<div class="span6">
+		<div class="main">
+			<span class="name">{{item._source.from.name}}</span>
+			<span class="username">
+				<a target="_blank" href="http://twitter.com/{{item._source.user.screen_name}}">{{item._source.user.screen_name}}</a>
+			</span>
+			<div class="content">{{item._source.message}}</div>
+		</div>
+	</div>
 </div>
