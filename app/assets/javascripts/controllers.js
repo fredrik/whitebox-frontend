@@ -8,11 +8,7 @@ function SearchCtrl($scope, $http) {
   	// Twitter search
   	if ($scope.twitter != null) {
 	  	if (query != undefined && query.length) {
-	  		url = 'http://localhost:9200/_search/?q=screen_name:' + $scope.twitter + ' AND *' + query + '*';
-	  		$.get(url, function(data) {
-	  			console.log(url);
-				  console.log(data);
-				});
+	  		url = 'http://localhost:9200/_search/?q=screen_name:' + $scope.twitter + ' AND text:*' + query + '*';
 
 			  $http.get(url).success(function(data) {
 			  	console.log('twitter success');
