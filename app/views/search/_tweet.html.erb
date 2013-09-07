@@ -3,9 +3,10 @@
 </div>
 
 <div class="main">
+	<a href="http://twitter.com/{{tweet._source.screen_name}}/status/{{tweet._source.raw.id_str}}" class="external" target="blank">find it &raquo;</a>
 	<span class="name">{{tweet._source.raw.user.name}}</span>
 	<span class="username">
-		<a target="_blank" href="http://twitter.com/{{tweet._source.screen_name}}">{{tweet._source.screen_name}}</a>
+		<a target="_blank" href="http://twitter.com/{{tweet._source.screen_name}}">@{{tweet._source.screen_name}}</a>
 	</span>
 	<div class="content">{{tweet._source.raw.text}}</div>
 </div>
