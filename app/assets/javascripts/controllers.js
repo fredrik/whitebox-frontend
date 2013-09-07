@@ -1,24 +1,31 @@
 function SearchCtrl($scope, $http) {
 
 	$scope.fb = getCookie('fb');
+	$scope.twitter = getCookie('twitter');
 
   $scope.search = function(query) {
   	
   	// Twitter search
-  	if (query != undefined && query.length) {
-		  $http.get('http://localhost:9200/_search/?q=text:' + query).success(function(data) {
-		    $scope.tweets = data.hits.hits
-		  }).
-		  error(function(data, status, headers, config) {
-		  	$scope.tweets = [];
-		  });
-		} else {
-			$http.get('http://localhost:9200/_search/?q=_type:tweet').success(function(data) {
-		    $scope.tweets = data.hits.hits
-		  }).
-		  error(function(data, status, headers, config) {
-		  	$scope.tweets = [];
-		  });
+  	if ($scope.twitter != null) {
+	  	if (query != undefined && query.length) {
+			  $http.get('http://localhost:9200/_search/?q=text:' + query).success(function(data) {
+			    $scope.tweets = data.hits.hits
+			  }).
+			  error(function(data, status, headers, config) {
+			  	$scope.tweets = [];
+			  });
+			} else {
+				$http.get('http://localhost:9200/_search/?q=_type:tweet').success(function(data) {
+			    $scope.tweets = data.hits.hits
+			  }).
+			  error(function(data, status, headers, config) {
+			  	$scope.tweets = [];
+			  });
+			}
+		}
+		else
+		{
+			$scope.tweets = [];
 		}
 
 		// Facebook search
