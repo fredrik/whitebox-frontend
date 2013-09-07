@@ -29,6 +29,7 @@
 	<div class="row-fluid">
 		<div class="span6 document">
 
+			<!-- Twitter -->
 			<img class="source" src="/assets/twitter.jpg" width="200px"/>
 			<ul>
 				<li class="tweet" ng-repeat="tweet in tweets">
@@ -40,7 +41,15 @@
 
 		<div class="span6 document">
 
+			<!-- Facebook -->
+			<a href="http://auth.whitebox.dev/facebook">
 			<img class="source" src="/assets/facebook.jpg" width="200px" />
+			</a>
+			
+			<% if not cookies[:fb].present? %>
+			<p><a href="http://auth.whitebox.dev/facebook">Authenticate</a></p>
+			<% end %>
+
 			<ul>
 				<li class="tweet" ng-repeat="tweet in tweets">
 					<%= render "facebook" %>
