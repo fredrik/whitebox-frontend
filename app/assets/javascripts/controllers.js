@@ -8,11 +8,11 @@ function SearchCtrl($scope, $http) {
   	// Twitter search
   	if ($scope.twitter != null) {
 	  	if (query != undefined && query.length) {
-			  $http.get('http://localhost:9200/_search/?q=screen_name:' + $scope.twitter + ' AND *' + query + '*').success(function(data) {
-			  	console.log(data);
+			  $http.get('http://localhost:9200/_search/?q=screen_name:' + $scope.twitter + ' AND text:*"' + query + '"*').success(function(data) {
 			    $scope.tweets = data.hits.hits
 			  }).
 			  error(function(data, status, headers, config) {
+			  	console.log('twitter error 1');
 			  	$scope.tweets = [];
 			  });
 			} else {
@@ -21,6 +21,7 @@ function SearchCtrl($scope, $http) {
 			  }).
 			  error(function(data, status, headers, config) {
 			  	$scope.tweets = [];
+			  	console.log('twitter error');
 			  });
 			}
 		}
@@ -32,10 +33,11 @@ function SearchCtrl($scope, $http) {
 		// Facebook search
 		if ($scope.fb != null) {
 	  	if (query != undefined && query.length) {
-			  $http.get('http://localhost:9200/_search/?q=fb:' + $scope.fb + ' AND *' + query + '*').success(function(data) {
+			  $http.get('http://localhost:9200/_search/?q=fb:' + $scope.fb + ' AND message:*"' + query + '"*').success(function(data) {
 			    $scope.fbFeed = data.hits.hits
 			  }).
 			  error(function(data, status, headers, config) {
+			  	console.log('facebook error');
 			  	$scope.fbFeed = [];
 			  });
 			} else {
@@ -43,6 +45,7 @@ function SearchCtrl($scope, $http) {
 			    $scope.fbFeed = data.hits.hits
 			  }).
 			  error(function(data, status, headers, config) {
+			  	console.log('facebook error');
 			  	$scope.fbFeed = [];
 			  });
 			}
