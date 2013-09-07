@@ -8,14 +8,15 @@ function SearchCtrl($scope, $http) {
   	// Twitter search
   	if ($scope.twitter != null) {
 	  	if (query != undefined && query.length) {
-			  $http.get('http://localhost:9200/_search/?q=text:' + query).success(function(data) {
+			  $http.get('http://localhost:9200/_search/?q=screen_name:' + $scope.twitter + ' AND *' + query + '*').success(function(data) {
+			  	console.log(data);
 			    $scope.tweets = data.hits.hits
 			  }).
 			  error(function(data, status, headers, config) {
 			  	$scope.tweets = [];
 			  });
 			} else {
-				$http.get('http://localhost:9200/_search/?q=_type:tweet').success(function(data) {
+				$http.get('http://localhost:9200/_search/?q=screen_name:' + $scope.twitter).success(function(data) {
 			    $scope.tweets = data.hits.hits
 			  }).
 			  error(function(data, status, headers, config) {

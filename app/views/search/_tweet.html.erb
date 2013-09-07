@@ -1,11 +1,11 @@
 <div class="avatar">
-	<img src="{{tweet._source.user.profile_image_url_https}}" />
+	<img src="{{tweet._source.raw.user.profile_image_url_https}}" />
 </div>
 
 <div class="main">
-	<span class="name">{{tweet._source.user.name}}</span>
+	<span class="name">{{tweet._source.raw.user.name}}</span>
 	<span class="username">
-		<a target="_blank" href="http://twitter.com/{{tweet._source.user.screen_name}}">{{tweet._source.user.screen_name}}</a>
+		<a target="_blank" href="http://twitter.com/{{tweet._source.screen_name}}">{{tweet._source.screen_name}}</a>
 	</span>
-	<div class="content">{{tweet._source.text}}</div>
+	<div class="content">{{tweet._source.raw.text}}</div>
 </div>
