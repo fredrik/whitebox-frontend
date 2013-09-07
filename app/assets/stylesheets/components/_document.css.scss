@@ -16,6 +16,17 @@ div.document {
     margin: -15px 83px 10px;
   }
 
+  ul.comments {
+    margin-top: 3px;
+    padding: 5px;
+    li {
+      padding: 3px;
+    }
+    b {
+      font-weight: bold;
+    }
+  }
+
   .document-meta {
     position: absolute;
     top: 10px;

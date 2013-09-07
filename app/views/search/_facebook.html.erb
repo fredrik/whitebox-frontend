@@ -4,13 +4,18 @@
 			<img src="{{item._source.picture}}" width="50px"/>
 		</div>
 	</div>
-	<div class="span6">
+	<div class="span8">
 		<div class="main">
 			<span class="name">{{item._source.from.name}}</span>
 			<span class="username">
 				<a target="_blank" href="http://twitter.com/{{item._source.user.screen_name}}">{{item._source.user.screen_name}}</a>
 			</span>
 			<div class="content">{{item._source.message}}</div>
+			<ul class="comments">
+				<li ng-repeat="comment in item._source.comments.data">
+					<p><b>{{comment.from.name}}</b> {{comment.message}}</p>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>

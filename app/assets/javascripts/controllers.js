@@ -8,11 +8,19 @@ function SearchCtrl($scope, $http) {
   	// Twitter search
   	if ($scope.twitter != null) {
 	  	if (query != undefined && query.length) {
-			  $http.get('http://localhost:9200/_search/?q=screen_name:' + $scope.twitter + ' AND text:*"' + query + '"*').success(function(data) {
+	  		url = 'http://localhost:9200/_search/?q=screen_name:' + $scope.twitter + ' AND *' + query + '*';
+	  		$.get(url, function(data) {
+	  			console.log(url);
+				  console.log(data);
+				});
+
+			  $http.get(url).success(function(data) {
+			  	console.log('twitter success');
 			    $scope.tweets = data.hits.hits
 			  }).
 			  error(function(data, status, headers, config) {
 			  	console.log('twitter error 1');
+			  	console.log(config);
 			  	$scope.tweets = [];
 			  });
 			} else {
@@ -41,7 +49,7 @@ function SearchCtrl($scope, $http) {
 			  	$scope.fbFeed = [];
 			  });
 			} else {
-				$http.get('http://localhost:9200/_search/?q=fb:' + $scope.fb).success(function(data) {
+				$http.get('http://localhost:9200/_search/?q=fb:' + $scope.fb + ' AND message:*').success(function(data) {
 			    $scope.fbFeed = data.hits.hits
 			  }).
 			  error(function(data, status, headers, config) {
