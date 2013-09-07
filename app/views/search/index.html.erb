@@ -30,7 +30,17 @@
 		<div class="span6 document">
 
 			<!-- Twitter -->
+			<a href="/?screen_name=0">
 			<img class="source" src="/assets/twitter.jpg" width="200px"/>
+			</a>
+
+			<% if not cookies[:twitter].present? %>
+				<form class="form" method="get" action="/">
+					<input type="text" name="screen_name">
+					<input type="submit" value="Set">
+				</form>
+			<% end %>
+
 			<ul>
 				<li class="tweet" ng-repeat="tweet in tweets">
 					<%= render "tweet" %>
